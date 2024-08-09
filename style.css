@@ -1,5 +1,5 @@
 :root {
-  --fallback: rgb(116, 103, 103);
+  --fallback: rgb(61, 186, 155);
 }
 
 * {
@@ -7,26 +7,40 @@
   padding: 0;
 }
 
-html {
+html,
+body {
   height: 100%;
 }
 
-body {
+main {
   height: 100%;
+  width: 100%;
   display: grid;
   justify-content: center;
+  justify-items: center;
   align-items: center;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 12vh;
-  padding: 0 3vw 0 5vw;
+  gap: 2vw;
 }
 
 /* -------------------SHAPES */
+.color {
+  background-color: var(--fallback);
+  box-shadow: 0 7px pink;
+}
+
 div {
   height: 100px;
   width: 100px;
-  background-color: var(--fallback);
+}
+
+div:hover {
+  transform: rotatey(30deg);
+}
+
+.square {
+  height: 100px;
+  width: 100px;
 }
 
 .circle {

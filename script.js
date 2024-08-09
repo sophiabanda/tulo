@@ -1,4 +1,5 @@
 /*
+- game start: all shapes shuffle into place
 - there are two of each shape, labeled with classname
 - total of 12 shapes
 - if click 1 matches click 2, it's a match!
@@ -8,7 +9,28 @@
 */
 
 // CONTSTANTS
+
+const shapeArray = [
+  'square',
+  'circle',
+  'trapezoid',
+  'rectangle',
+  'parallelogram',
+  'triangle',
+  'square',
+  'circle',
+  'trapezoid',
+  'rectangle',
+  'parallelogram',
+  'triangle',
+];
 // STATE VARIABLES
 // CACHED ELEMENTS
+let totalMatches;
+let matchedShapes;
+const divs = document.querySelectorAll('div');
+divs.forEach((div, index) => {
+  div.classList.add('color', shapeArray[index]);
+});
 // EVENT LISTENERS
 // FUNCTIONS
