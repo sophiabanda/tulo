@@ -28,9 +28,6 @@ const shapeArray = [
 // CACHED ELEMENTS
 let totalMatches;
 let matchedShapes;
-const divs = document.querySelectorAll('div');
-divs.forEach((div, index) => {
-  div.classList.add('color', shapeArray[index]);
-});
+
 // EVENT LISTENERS
 // FUNCTIONS
