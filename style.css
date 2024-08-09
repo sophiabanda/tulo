@@ -19,59 +19,11 @@ main {
   justify-content: center;
   justify-items: center;
   align-items: center;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2vw;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 /* -------------------SHAPES */
-.color {
-  background-color: var(--fallback);
-  box-shadow: 0 7px pink;
-}
-
 div {
-  height: 100px;
-  width: 100px;
-}
-
-div:hover {
-  transform: rotatey(30deg);
-}
-
-.square {
-  height: 100px;
-  width: 100px;
-}
-
-.circle {
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-}
-
-.rectangle {
-  height: 85px;
-  width: 130px;
-}
-
-.parallelogram {
-  transform: skew(20deg);
-}
-
-.trapezoid {
-  height: 0;
-  width: 75px;
-  background-color: transparent;
-  border-bottom: 75px solid var(--fallback);
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
-}
-
-.triangle {
-  width: 0;
-  height: 0;
-  background-color: transparent;
-  border-bottom: 100px solid var(--fallback);
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
+  height: 200px;
+  width: 200px;
 }

@@ -10,24 +10,13 @@
 
 // CONTSTANTS
 
-const shapeArray = [
-  'square',
-  'circle',
-  'trapezoid',
-  'rectangle',
-  'parallelogram',
-  'triangle',
-  'square',
-  'circle',
-  'trapezoid',
-  'rectangle',
-  'parallelogram',
-  'triangle',
-];
+const shapeArray = [``];
 // STATE VARIABLES
 // CACHED ELEMENTS
 let totalMatches;
 let matchedShapes;
+
+const divs = document.querySelectorAll('div');
 
 // EVENT LISTENERS
 // FUNCTIONS
