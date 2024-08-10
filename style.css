@@ -5,28 +5,33 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-html,
+html {
+  height: 100%;
+}
+
 body {
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 main {
-  height: 100%;
-  width: 100%;
+  padding: 50px;
   display: grid;
   justify-content: center;
   justify-items: center;
   align-items: center;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 50px;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 /* -------------------SHAPES */
 div {
-  height: 200px;
-  width: 200px;
+  height: 15vh;
+  width: 15vw;
 }
 
 svg path,
