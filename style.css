@@ -19,7 +19,8 @@ main {
   justify-content: center;
   justify-items: center;
   align-items: center;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+  gap: 50px;
 }
 
 /* -------------------SHAPES */
@@ -27,3 +28,13 @@ div {
   height: 200px;
   width: 200px;
 }
+
+svg path,
+svg ellipse,
+svg rect {
+  transform: scale(0.5);
+}
+
+/* svg:hover {
+  transform: rotate(20deg);
+} */
