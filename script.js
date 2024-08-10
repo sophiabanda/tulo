@@ -42,30 +42,32 @@ const shapesArray = [
 ];
 const colorOptions = [
   'firebrick',
-  'fuchsia',
-  'gold',
-  'green',
-  'chartreuse',
-  'cornflowerblue',
-  'purple',
-  'firebrick',
-  'fuchsia',
-  'gold',
-  'green',
-  'cornflowerblue',
-  'purple',
-  'cyan',
-  'darkgreen',
-  'cyan',
-  'maroon',
-  'maroon',
-  'teal',
-  'teal',
-  'pink',
-  'pink',
-  'chartreuse',
-  'darkgreen',
+  'slateblue',
+  'magenta',
+  'mediumspringgreen',
+  'lime',
+  'lightseagreen',
+  'indigo',
+  'goldenrod',
+  'indianred',
+  'darkslategrey',
+  'darkolivegreen',
+  'darkmagenta',
+  'darksalmon',
+  'darkcyan',
+  'aquamarine',
   'darkslateblue',
+  'deeppink',
+  'teal',
+  'springgreen',
+  'powderblue',
+  'plum',
+  'palegreen',
+  'navy',
+  'mediumpurple',
+  'lightsalmon',
+  'midnightblue',
+  'orchid',
 ];
 
 // STATE VARIABLES
@@ -93,12 +95,12 @@ function initialize() {
 }
 
 function shuffleShapes() {
-  const shuffArray = shapesArray.slice();
-  for (let i = shuffArray.length - 1; i > 0; i--) {
+  const shuffledArray = shapesArray.slice();
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [shuffArray[i], shuffArray[j]] = [shuffArray[j], shuffArray[i]];
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
   }
-  return shuffArray;
+  return shuffledArray;
 }
 
 function shuffleColors() {
