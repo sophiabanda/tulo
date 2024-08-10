@@ -30,8 +30,3 @@ main {
 }
 
 /* -------------------SHAPES */
-path,
-circle,
-ellipse {
-  fill: rgb(61, 186, 155);
-}
