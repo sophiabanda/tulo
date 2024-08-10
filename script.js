@@ -59,13 +59,25 @@ const colorOptions = [
 // CACHED ELEMENTS
 let totalMatches;
 let matchedShapes;
-const svgDiv = document.querySelector('svg');
+const svgDivs = document.querySelectorAll('svg');
 // EVENT LISTENERS
 // FUNCTIONS
 
 initialize();
 
-function initialize() {}
+function initialize() {
+  const shuffledShapes = shuffleShapes();
+  const shuffledColors = shuffleColors();
+
+  svgDivs.forEach((svg, index) => {
+    svg.innerHTML = shuffledShapes[index];
+
+    const shapeElement = svg.querySelector('path, rect, ellipse');
+    if (shapeElement) {
+      shapeElement.setAttribute('fill', shuffledColors[index]);
+    }
+  });
+}
 
 function shuffleShapes() {
   const shuffArray = shapesArray.slice();
