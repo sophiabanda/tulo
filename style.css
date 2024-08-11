@@ -32,15 +32,17 @@ main {
 }
 
 /* ----------------MODE BUTTON */
+div {
+  display: flex;
+}
+
 #mode {
   border-radius: 50%;
-  border: 1px solid white;
   padding: 15px;
-  background-color: goldenrod;
 }
 
 .light-mode {
-  background-color: rgb(194, 210, 250);
+  background-color: rgb(252, 211, 241);
 }
 
 .dark-mode {
@@ -53,9 +55,9 @@ svg:hover {
   transform: scale(1.5);
 }
 
-path,
+/* path,
 ellipse,
 circle {
   stroke: black;
   stroke-width: 2;
-}
+} */

@@ -1,15 +1,4 @@
-/*
-- game start: all shapes shuffle into place
-- there are two of each shape, labeled with classname
-- total of 12 shapes
-- if click 1 matches click 2, it's a match!
-- else, try again to match click 1 and 2
-- when all matches are made, you win
-- celebration!
-*/
-
 // CONTSTANTS
-
 const shapesArray = [
   `<circle class="circle" cx="50" cy=" 50" r="50" />`,
   `<ellipse class="oval" cx="50" cy="50" rx="50" ry="30" />`,
@@ -71,24 +60,29 @@ const colorOptions = [
 ];
 
 // STATE VARIABLES
-// CACHED ELEMENTS
 let totalMatches;
 let matchedShapes;
+
+// CACHED ELEMENTS
 const modeButton = document.getElementById('mode');
 const svgs = document.querySelectorAll('svg');
+
 // EVENT LISTENERS
 svgs.forEach((svg) => {
   svg.addEventListener('click', handleClick);
 });
 
-modeButton.addEventListener('click', function (event) {
+modeButton.addEventListener('click', function () {
   document.querySelector('html').classList.toggle('light-mode');
+  modeButton.classList.toggle('dark-mode');
 });
+
 // FUNCTIONS
 initialize();
 function initialize() {
   const shuffledColors = shuffleColors();
   const shuffledShapes = shuffleShapes();
+  modeButton.classList.add('light-mode');
 
   svgs.forEach((svg, idx) => {
     svg.innerHTML = shuffledShapes[idx];
