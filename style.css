@@ -34,6 +34,8 @@ main {
 /* ----------------MODE BUTTON */
 div {
   display: flex;
+  width: 100%;
+  padding: 25px;
 }
 
 #mode {
