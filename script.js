@@ -76,10 +76,12 @@ let totalMatches;
 let matchedShapes;
 const svgs = document.querySelectorAll('svg');
 // EVENT LISTENERS
+svgs.forEach((svg) => {
+  svg.addEventListener('click', handleClick);
+});
+
 // FUNCTIONS
-
 initialize();
-
 function initialize() {
   const shuffledColors = shuffleColors();
   const shuffledShapes = shuffleShapes();
@@ -110,4 +112,9 @@ function shuffleColors() {
     [colorArr[i], colorArr[j]] = [colorArr[j], colorArr[i]];
   }
   return colorArr;
+}
+
+function handleClick(event) {
+  console.log(event.target.attributes.class);
+  let shape1 = event.target.attributes.class;
 }
