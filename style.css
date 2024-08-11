@@ -24,7 +24,7 @@ body {
 main {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
+  gap: 5vw;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -32,11 +32,6 @@ main {
 }
 
 /* ----------------MODE BUTTON */
-div {
-  display: flex;
-  width: 100%;
-  padding: 25px;
-}
 
 #mode {
   background-color: transparent;
@@ -53,6 +48,11 @@ div {
 }
 
 /* -------------------SHAPES */
+
+svg {
+  width: 10vw;
+  height: auto;
+}
 
 svg:hover {
   transform: scale(1.5);
