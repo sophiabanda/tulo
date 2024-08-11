@@ -37,16 +37,17 @@ div {
 }
 
 #mode {
-  border-radius: 50%;
-  padding: 15px;
+  background-color: transparent;
+  border: none;
+  font-size: 30px;
 }
 
 .light-mode {
-  background-color: rgb(252, 211, 241);
+  background-color: rgb(250, 225, 244);
 }
 
 .dark-mode {
-  background-color: rgb(32, 31, 31);
+  background-color: rgb(29, 29, 29);
 }
 
 /* -------------------SHAPES */

@@ -66,6 +66,7 @@ let matchedShapes;
 // CACHED ELEMENTS
 const modeButton = document.getElementById('mode');
 const svgs = document.querySelectorAll('svg');
+const html = document.querySelector('html');
 
 // EVENT LISTENERS
 svgs.forEach((svg) => {
@@ -73,8 +74,12 @@ svgs.forEach((svg) => {
 });
 
 modeButton.addEventListener('click', function () {
-  document.querySelector('html').classList.toggle('light-mode');
-  modeButton.classList.toggle('dark-mode');
+  html.classList.toggle('light-mode');
+  if (modeButton.innerText === '💡') {
+    modeButton.innerText = '🌘';
+  } else {
+    modeButton.innerText = '💡';
+  }
 });
 
 // FUNCTIONS
@@ -82,7 +87,6 @@ initialize();
 function initialize() {
   const shuffledColors = shuffleColors();
   const shuffledShapes = shuffleShapes();
-  modeButton.classList.add('light-mode');
 
   svgs.forEach((svg, idx) => {
     svg.innerHTML = shuffledShapes[idx];
