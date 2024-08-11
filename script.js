@@ -74,12 +74,16 @@ const colorOptions = [
 // CACHED ELEMENTS
 let totalMatches;
 let matchedShapes;
+const modeButton = document.getElementById('mode');
 const svgs = document.querySelectorAll('svg');
 // EVENT LISTENERS
 svgs.forEach((svg) => {
   svg.addEventListener('click', handleClick);
 });
 
+modeButton.addEventListener('click', function (event) {
+  document.querySelector('html').classList.toggle('light-mode');
+});
 // FUNCTIONS
 initialize();
 function initialize() {
