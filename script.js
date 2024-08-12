@@ -76,7 +76,7 @@ modeButton.addEventListener('click', function () {
 // FUNCTIONS
 document.addEventListener('DOMContentLoaded', () => {
   const svgContainer = document.getElementById('svg-container');
-  const svgCount = 24; // Number of SVG elements to generate
+  const svgCount = 24;
 
   for (let i = 0; i < svgCount; i++) {
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
