@@ -1,4 +1,4 @@
-// CONSTANTS
+//CONSTANTS
 const shapesArray = [
   `<circle class="circle" cx="50" cy="50" r="50" />`,
   `<ellipse class="oval" cx="50" cy="50" rx="50" ry="30" />`,
@@ -55,68 +55,50 @@ const colorOptions = [
   'orchid',
 ];
 
-// STATE VARIABLES
-let totalMatches;
-let matchedShapes;
+//STATE VARIABLES
 
-// CACHED ELEMENTS
-const modeButton = document.getElementById('mode');
+//CACHED ELEMENTS
 const html = document.querySelector('html');
+const lightModeButton = document.getElementById('mode');
+const svgContainer = document.getElementById('svg-container');
+//EVENT LISTENERS
 
-// EVENT LISTENERS
-modeButton.addEventListener('click', function () {
-  html.classList.toggle('light-mode');
-  if (modeButton.innerText === '💡') {
-    modeButton.innerText = '🌘';
-  } else {
-    modeButton.innerText = '💡';
-  }
-});
-
-// FUNCTIONS
-document.addEventListener('DOMContentLoaded', () => {
-  const svgContainer = document.getElementById('svg-container');
-  const svgCount = 24;
-
-  for (let i = 0; i < svgCount; i++) {
+//FUNCTIONS
+window.addEventListener('DOMContentLoaded', () => {
+  for (let i = 0; i < shapesArray.length; i++) {
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('height', '100');
     svg.setAttribute('width', '100');
-    svg.setAttribute('class', 'shape');
     svg.setAttribute('viewBox', '0 0 100 100');
     svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
     svgContainer.appendChild(svg);
   }
 
   const svgs = document.querySelectorAll('svg');
-  svgs.forEach((svg) => {
-    svg.addEventListener('click', handleClick);
-  });
-
   initialize(svgs);
 });
 
 function initialize(svgs) {
-  const shuffledColors = shuffleColors();
-  const shuffledShapes = shuffleShapes();
+  const shapes = shuffleShapes();
+  const colors = shuffleColors();
 
   svgs.forEach((svg, idx) => {
-    svg.innerHTML = shuffledShapes[idx];
-
-    const imgEls = svg.querySelector('path, ellipse, circle');
-    if (imgEls) {
-      imgEls.setAttribute('fill', shuffledColors[idx]);
+    svg.innerHTML = shapes[idx];
+    const shapeEls = svg.querySelector('path, ellipse, circle');
+    if (shapeEls) {
+      shapeEls.setAttribute('fill', colors[idx]);
     }
   });
 }
 
 function shuffleShapes() {
-  const shuffledArray = shapesArray.slice();
-  for (let i = shuffledArray.length - 1; i > 0; i--) {
+  const shapeArr = shapesArray.slice();
+  for (let i = shapeArr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+    [shapeArr[i], shapeArr[j]] = [shapeArr[j], shapeArr[i]];
   }
-  return shuffledArray;
+  console.log(shapeArr);
+  return shapeArr;
 }
 
 function shuffleColors() {
@@ -126,9 +108,4 @@ function shuffleColors() {
     [colorArr[i], colorArr[j]] = [colorArr[j], colorArr[i]];
   }
   return colorArr;
-}
-
-function handleClick(event) {
-  console.log(event.target.attributes.class);
-  let shape1 = event.target.attributes.class;
 }

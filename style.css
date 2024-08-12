@@ -50,8 +50,9 @@ main {
 
 /* -------------------SHAPES */
 svg {
-  width: 10vw;
+  width: clamp(5px, 10vw, 200px);
   height: auto;
+  border: 2px solid fuchsia;
 }
 
 svg:hover {
