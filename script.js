@@ -54,13 +54,13 @@ const colorOptions = [
   'midnightblue',
   'orchid',
 ];
-
 //------------------------------------------------------------------------------- STATE VARIABLES
 
 //------------------------------------------------------------------------------- CACHED ELEMENTS
 const html = document.querySelector('html');
 const lightModeButton = document.getElementById('mode');
 const svgContainer = document.getElementById('svg-container');
+const resetButton = document.getElementById('reset');
 
 //------------------------------------------------------------------------------- EVENT LISTENERS
 lightModeButton.addEventListener('click', function () {
@@ -70,6 +70,11 @@ lightModeButton.addEventListener('click', function () {
   } else {
     lightModeButton.innerText = '💡';
   }
+});
+
+resetButton.addEventListener('click', () => {
+  const svgs = document.querySelectorAll('svg');
+  initialize(svgs);
 });
 
 //------------------------------------------------------------------------------- FUNCTIONS
@@ -82,8 +87,8 @@ window.addEventListener('DOMContentLoaded', () => {
     svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
     svgContainer.appendChild(svg);
   }
-
   const svgs = document.querySelectorAll('svg');
+
   initialize(svgs);
 });
 
@@ -93,9 +98,11 @@ function initialize(svgs) {
 
   svgs.forEach((svg, idx) => {
     svg.innerHTML = shapes[idx];
+    svg.addEventListener('click', handleSelection);
     const shapeEls = svg.querySelector('path, ellipse, circle');
     if (shapeEls) {
       shapeEls.setAttribute('fill', colors[idx]);
+      shapeEls.setAttribute('id', idx);
     }
   });
 }
@@ -116,4 +123,9 @@ function shuffleColors() {
     [colorArr[i], colorArr[j]] = [colorArr[j], colorArr[i]];
   }
   return colorArr;
+}
+
+function handleSelection(e) {
+  console.log(e.target);
+  const svgs = document.querySelectorAll('svg');
 }

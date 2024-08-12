@@ -1,5 +1,5 @@
 :root {
-  --dark: rgb(33, 33, 33);
+  --dark: rgb(7, 7, 7);
   --light: rgb(250, 225, 244);
 }
 
@@ -34,12 +34,17 @@ main {
   align-items: center;
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* ----------------MODE BUTTON */
 
 #mode {
   background-color: transparent;
   border: none;
-  font-size: 5vh;
+  font-size: 3.5vh;
 }
 
 .light-mode {
@@ -60,9 +65,13 @@ svg:hover {
   transform: scale(1.5);
 }
 
-path,
+.transform {
+  transform: scale(1.5);
+}
+
+/* path,
 ellipse,
 circle {
-  stroke: white;
-  stroke-width: 3;
-}
+  stroke: rgb(190, 179, 179);
+  stroke-width: 2;
+} */
