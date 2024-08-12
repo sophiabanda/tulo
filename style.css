@@ -32,7 +32,6 @@ main {
   grid-template-columns: repeat(6, 1fr);
   justify-items: center;
   align-items: center;
-  text-align: center;
 }
 
 /* ----------------MODE BUTTON */
@@ -55,16 +54,15 @@ main {
 svg {
   width: clamp(50px, 10vw, 200px);
   height: auto;
-  border: 2px solid fuchsia;
 }
 
 svg:hover {
   transform: scale(1.5);
 }
 
-/* path,
+path,
 ellipse,
 circle {
-  stroke: black;
-  stroke-width: 2;
-} */
+  stroke: white;
+  stroke-width: 3;
+}

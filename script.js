@@ -1,4 +1,4 @@
-//CONSTANTS
+//------------------------------------------------------------------------------- CONSTANTS
 const shapesArray = [
   `<circle class="circle" cx="50" cy="50" r="50" />`,
   `<ellipse class="oval" cx="50" cy="50" rx="50" ry="30" />`,
@@ -55,15 +55,24 @@ const colorOptions = [
   'orchid',
 ];
 
-//STATE VARIABLES
+//------------------------------------------------------------------------------- STATE VARIABLES
 
-//CACHED ELEMENTS
+//------------------------------------------------------------------------------- CACHED ELEMENTS
 const html = document.querySelector('html');
 const lightModeButton = document.getElementById('mode');
 const svgContainer = document.getElementById('svg-container');
-//EVENT LISTENERS
 
-//FUNCTIONS
+//------------------------------------------------------------------------------- EVENT LISTENERS
+lightModeButton.addEventListener('click', function () {
+  html.classList.toggle('light-mode');
+  if (lightModeButton === '💡') {
+    lightModeButton.innerText = '🌘';
+  } else {
+    lightModeButton.innerText = '💡';
+  }
+});
+
+//------------------------------------------------------------------------------- FUNCTIONS
 window.addEventListener('DOMContentLoaded', () => {
   for (let i = 0; i < shapesArray.length; i++) {
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
