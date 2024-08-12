@@ -97,7 +97,6 @@ function shuffleShapes() {
     const j = Math.floor(Math.random() * (i + 1));
     [shapeArr[i], shapeArr[j]] = [shapeArr[j], shapeArr[i]];
   }
-  console.log(shapeArr);
   return shapeArr;
 }
 

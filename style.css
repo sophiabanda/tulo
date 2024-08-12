@@ -30,6 +30,9 @@ main {
   height: 100%;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
+  justify-items: center;
+  align-items: center;
+  text-align: center;
 }
 
 /* ----------------MODE BUTTON */
@@ -50,7 +53,7 @@ main {
 
 /* -------------------SHAPES */
 svg {
-  width: clamp(5px, 10vw, 200px);
+  width: clamp(50px, 10vw, 200px);
   height: auto;
   border: 2px solid fuchsia;
 }
