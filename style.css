@@ -18,11 +18,6 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  border: 2px solid magenta;
-}
-
-div {
-  border: 2px solid rgb(122, 115, 202);
 }
 
 h2 {
@@ -30,7 +25,6 @@ h2 {
 }
 
 main {
-  border: 2px solid rgb(44, 215, 207);
   height: 100%;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
