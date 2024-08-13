@@ -25,6 +25,10 @@ div {
   border: 2px solid rgb(122, 115, 202);
 }
 
+h2 {
+  color: whitesmoke;
+}
+
 main {
   border: 2px solid rgb(44, 215, 207);
   height: 100%;

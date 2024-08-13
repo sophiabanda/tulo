@@ -59,6 +59,7 @@ let shape1 = null;
 let shape2 = null;
 let matchedShapes = 0;
 let totalShapeSets = shapesArray.length / 2;
+console.log(matchedShapes, totalShapeSets);
 //------------------------------------------------------------------------ CACHED ELEMENTS
 const html = document.querySelector('html');
 const lightModeButton = document.getElementById('mode');
@@ -100,8 +101,10 @@ window.addEventListener('DOMContentLoaded', () => {
 function initialize(svgs) {
   const shapes = shuffleShapes();
   const colors = shuffleColors();
-  unmatchedH2.innerText = `Unmatched Shape Sets: ${totalShapeSets}`;
+  matchedShapes = 0;
+  totalShapeSets = shapesArray.length / 2;
   matchedH2.innerText = `Matched Shape Sets: ${matchedShapes}`;
+  unmatchedH2.innerText = `Unmatched Shape Sets: ${totalShapeSets}`;
 
   svgs.forEach((svg, idx) => {
     svg.innerHTML = shapes[idx];
@@ -158,6 +161,10 @@ function checkMatch(shape1, shape2) {
     shape2.parentNode.classList.remove('no-click');
     shape1.classList.add('hide');
     shape2.classList.add('hide');
+    matchedShapes++;
+    totalShapeSets--;
+    matchedH2.innerText = `Matched Shape Sets: ${matchedShapes}`;
+    unmatchedH2.innerText = `Unmatched Shape Sets: ${totalShapeSets}`;
     clearSelection();
   } else {
     shape1.parentNode.classList.remove('transform');
@@ -181,9 +188,3 @@ function checkWin() {
   }
 }
 function winGame() {}
-
-/*   
- matchedShapes++;
-    totalShapeSets--;
-    matchedH2.innerText = `Matched Shape Sets: ${matchedShapes}`;
-    unmatchedH2.innerText = `Unmatched Shape Sets: ${totalShapeSets}`; */
