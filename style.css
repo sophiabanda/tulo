@@ -1,6 +1,6 @@
 :root {
   --dark: rgb(7, 7, 7);
-  --light: rgb(250, 225, 244);
+  --light: rgb(247, 235, 244);
 }
 
 * {
@@ -67,6 +67,14 @@ svg:hover {
 
 .transform {
   transform: scale(1.5);
+}
+
+.hide {
+  display: none;
+}
+
+.no-click {
+  pointer-events: none;
 }
 
 /* path,

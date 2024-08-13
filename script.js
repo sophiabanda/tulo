@@ -55,7 +55,9 @@ const colorOptions = [
   'orchid',
 ];
 //------------------------------------------------------------------------------- STATE VARIABLES
-
+let shape1 = null;
+let shape2 = null;
+let matchedShapes = 0;
 //------------------------------------------------------------------------------- CACHED ELEMENTS
 const html = document.querySelector('html');
 const lightModeButton = document.getElementById('mode');
@@ -100,6 +102,7 @@ function initialize(svgs) {
     svg.innerHTML = shapes[idx];
     svg.addEventListener('click', handleSelection);
     const shapeEls = svg.querySelector('path, ellipse, circle');
+
     if (shapeEls) {
       shapeEls.setAttribute('fill', colors[idx]);
       shapeEls.setAttribute('id', idx);
@@ -126,6 +129,24 @@ function shuffleColors() {
 }
 
 function handleSelection(e) {
-  console.log(e.target);
-  const svgs = document.querySelectorAll('svg');
+  const selection = e.target;
+  console.log(selection.classList.toString());
+  if (!shape1) {
+    shape1 = selection;
+    shape1.parentNode.classList.add('transform');
+    shape1.parentNode.classList.add('no-click');
+  } else if (!shape2) {
+    shape2 = selection;
+    shape2.parentNode.classList.add('transform');
+    shape2.parentNode.classList.add('no-click');
+    checkMatch(shape1, shape2);
+  }
+}
+
+function checkMatch(shape1, shape2) {
+  if (shape1.classList.toString() === shape2.classList.toString()) {
+    console.log('Yay!!');
+  } else {
+    console.log('Try again');
+  }
 }
