@@ -63,12 +63,8 @@ svg:hover {
   transform: scale(1.75);
 }
 
-.transform {
+.scale {
   transform: scale(1.75);
-}
-
-.hide {
-  display: none;
 }
 
 .no-click {
