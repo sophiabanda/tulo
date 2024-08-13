@@ -59,7 +59,6 @@ let shape1 = null;
 let shape2 = null;
 let matchedShapes = 0;
 let totalShapeSets = shapesArray.length / 2;
-console.log(matchedShapes, totalShapeSets);
 //------------------------------------------------------------------------ CACHED ELEMENTS
 const html = document.querySelector('html');
 const lightModeButton = document.getElementById('mode');
@@ -138,15 +137,12 @@ function shuffleColors() {
 
 function handleSelection(e) {
   const selection = e.target;
-  console.log(selection.classList.toString());
   if (!shape1) {
     shape1 = selection;
-    console.log(shape1, 'shape1');
     shape1.parentNode.classList.add('transform');
     shape1.parentNode.classList.add('no-click');
   } else if (!shape2) {
     shape2 = selection;
-    console.log(shape2, 'shape2');
     shape2.parentNode.classList.add('transform');
     shape2.parentNode.classList.add('no-click');
     checkMatch(shape1, shape2);
