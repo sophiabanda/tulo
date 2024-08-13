@@ -54,17 +54,20 @@ const colorOptions = [
   'midnightblue',
   'orchid',
 ];
-//------------------------------------------------------------------------------- STATE VARIABLES
+//------------------------------------------------------------------------- STATE VARIABLES
 let shape1 = null;
 let shape2 = null;
 let matchedShapes = 0;
-//------------------------------------------------------------------------------- CACHED ELEMENTS
+let totalShapeSets = shapesArray.length / 2;
+//------------------------------------------------------------------------ CACHED ELEMENTS
 const html = document.querySelector('html');
 const lightModeButton = document.getElementById('mode');
 const svgContainer = document.getElementById('svg-container');
 const resetButton = document.getElementById('reset');
+const unmatchedH2 = document.getElementById('unmatched');
+const matchedH2 = document.getElementById('matched');
 
-//------------------------------------------------------------------------------- EVENT LISTENERS
+//------------------------------------------------------------------------- EVENT LISTENERS
 lightModeButton.addEventListener('click', function () {
   html.classList.toggle('light-mode');
   if (lightModeButton === '💡') {
@@ -79,7 +82,7 @@ resetButton.addEventListener('click', () => {
   initialize(svgs);
 });
 
-//------------------------------------------------------------------------------- FUNCTIONS
+//------------------------------------------------------------------------------ FUNCTIONS
 window.addEventListener('DOMContentLoaded', () => {
   for (let i = 0; i < shapesArray.length; i++) {
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -97,6 +100,8 @@ window.addEventListener('DOMContentLoaded', () => {
 function initialize(svgs) {
   const shapes = shuffleShapes();
   const colors = shuffleColors();
+  unmatchedH2.innerText = `Unmatched Shape Sets: ${totalShapeSets}`;
+  matchedH2.innerText = `Matched Shape Sets: ${matchedShapes}`;
 
   svgs.forEach((svg, idx) => {
     svg.innerHTML = shapes[idx];
@@ -133,10 +138,12 @@ function handleSelection(e) {
   console.log(selection.classList.toString());
   if (!shape1) {
     shape1 = selection;
+    console.log(shape1, 'shape1');
     shape1.parentNode.classList.add('transform');
     shape1.parentNode.classList.add('no-click');
   } else if (!shape2) {
     shape2 = selection;
+    console.log(shape2, 'shape2');
     shape2.parentNode.classList.add('transform');
     shape2.parentNode.classList.add('no-click');
     checkMatch(shape1, shape2);
@@ -145,8 +152,38 @@ function handleSelection(e) {
 
 function checkMatch(shape1, shape2) {
   if (shape1.classList.toString() === shape2.classList.toString()) {
-    console.log('Yay!!');
+    shape1.parentNode.classList.remove('transform');
+    shape1.parentNode.classList.remove('no-click');
+    shape2.parentNode.classList.remove('transform');
+    shape2.parentNode.classList.remove('no-click');
+    shape1.classList.add('hide');
+    shape2.classList.add('hide');
+    clearSelection();
   } else {
-    console.log('Try again');
+    shape1.parentNode.classList.remove('transform');
+    shape1.parentNode.classList.remove('no-click');
+    shape2.parentNode.classList.remove('transform');
+    shape2.parentNode.classList.remove('no-click');
+    clearSelection();
   }
 }
+
+function clearSelection() {
+  shape1 = null;
+  shape2 = null;
+}
+
+function checkWin() {
+  if (totalShapeSets === 0) {
+    winGame();
+  } else {
+    return;
+  }
+}
+function winGame() {}
+
+/*   
+ matchedShapes++;
+    totalShapeSets--;
+    matchedH2.innerText = `Matched Shape Sets: ${matchedShapes}`;
+    unmatchedH2.innerText = `Unmatched Shape Sets: ${totalShapeSets}`; */

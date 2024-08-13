@@ -62,11 +62,11 @@ svg {
 }
 
 svg:hover {
-  transform: scale(1.5);
+  transform: scale(1.75);
 }
 
 .transform {
-  transform: scale(1.5);
+  transform: scale(1.75);
 }
 
 .hide {
