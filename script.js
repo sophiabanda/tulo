@@ -139,39 +139,29 @@ function handleSelection(e) {
   const selection = e.target;
   if (!shape1) {
     shape1 = selection;
-    console.log('select1', shape1);
-    shape1.parentNode.classList.add('transform');
+    shape1.parentNode.classList.add('scale');
     shape1.parentNode.classList.add('no-click');
+    console.log('select1', shape1);
   } else if (!shape2) {
     shape2 = selection;
-    console.log('select2', shape2);
-    shape2.parentNode.classList.add('transform');
+    shape2.parentNode.classList.add('scale');
     shape2.parentNode.classList.add('no-click');
+    console.log('select2', shape2);
     checkMatch(shape1, shape2);
   }
 }
 
 function checkMatch(shape1, shape2) {
   if (shape1.classList.toString() === shape2.classList.toString()) {
-    shape1.parentNode.classList.add(
-      'animate__fadeOutUpBig',
-      'animate__animated'
-    );
-    shape2.parentNode.classList.add(
-      'animate__fadeOutUpBig',
-      'animate__animated'
-    );
     matchedShapes++;
     totalShapeSets--;
     matchedH2.innerText = `Matched Shape Sets: ${matchedShapes}`;
     unmatchedH2.innerText = `Unmatched Shape Sets: ${totalShapeSets}`;
     clearSelection();
   } else {
-    shape1.parentNode.classList.add('animate__animated', 'animate__jello');
-    shape2.parentNode.classList.add('animate__animated', 'animate__jello');
-    shape1.parentNode.classList.remove('transform');
+    shape1.parentNode.classList.remove('scale');
     shape1.parentNode.classList.remove('no-click');
-    shape2.parentNode.classList.remove('transform');
+    shape2.parentNode.classList.remove('scale');
     shape2.parentNode.classList.remove('no-click');
     clearSelection();
   }
