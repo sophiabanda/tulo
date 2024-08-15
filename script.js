@@ -172,10 +172,16 @@ const matchedH2 = document.getElementById('matched');
 const redButton = document.getElementById('red');
 const greensButton = document.getElementById('green');
 const purpleButton = document.getElementById('purple');
+const header = document.querySelector('header');
+const buttonDiv = document.getElementById('buttonsDiv');
 
 //------------------------------------------------------------------------- EVENT LISTENERS
 lightModeButton.addEventListener('click', function () {
   html.classList.toggle('light-mode');
+  unmatchedH2.classList.toggle('light');
+  matchedH2.classList.toggle('light');
+  header.classList.toggle('light');
+  buttonDiv.classList.toggle('light');
   if (lightModeButton === '💡') {
     lightModeButton.innerText = '🌘';
   } else {
@@ -212,8 +218,8 @@ function initialize(svgs) {
   const colors = shuffleColors(colorOptions);
   matchedShapes = 0;
   totalShapeSets = shapesArray.length / 2;
-  matchedH2.innerText = `Matched Shape Sets: ${matchedShapes}`;
-  unmatchedH2.innerText = `Unmatched Shape Sets: ${totalShapeSets}`;
+  matchedH2.innerHTML = `Matched Shape Sets: <span style="color: red">${matchedShapes}</span>`;
+  unmatchedH2.innerHTML = `Unmatched Shape Sets: <span style="color: red">${totalShapeSets}</span>`;
 
   svgs.forEach((svg, idx) => {
     svg.innerHTML = shapes[idx];

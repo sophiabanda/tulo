@@ -43,6 +43,8 @@ main {
 header {
   display: flex;
   justify-content: space-around;
+  padding: 30px;
+  border-bottom: 2px dashed var(--light);
 }
 
 /* ----------------MODE BUTTON */
@@ -66,6 +68,13 @@ header {
   display: flex;
   justify-content: space-evenly;
   padding: 30px;
+  border-top: 2px dashed var(--light);
+}
+
+.light {
+  border-top: 2px dashed var(--dark);
+  border-bottom: 2px dashed var(--dark);
+  color: var(--dark);
 }
 
 #buttonsDiv button {
@@ -75,6 +84,7 @@ header {
   border: none;
   border-radius: 10px;
   text-align: center;
+  margin-left: 2vw;
 }
 
 #reset {
@@ -82,7 +92,7 @@ header {
 }
 
 #red {
-  background: linear-gradient(#5c0202, #f18053);
+  background: linear-gradient(#8b0303, #f18053);
 }
 
 #green {
