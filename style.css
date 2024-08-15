@@ -42,7 +42,7 @@ main {
 /* -------------------STATS HEADER */
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 /* ----------------MODE BUTTON */
