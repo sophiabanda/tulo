@@ -3,10 +3,17 @@
   --light: rgb(247, 235, 244);
 }
 
+@font-face {
+  font-family: 'ShadowsIntoLight';
+  src: url('assets/fonts/Shadows_Into_Light/ShadowsIntoLight-Regular.ttf');
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'ShadowsIntoLight';
+  font-size: 3vw;
 }
 
 html {
@@ -32,6 +39,7 @@ main {
   align-items: center;
 }
 
+/* -------------------STATS HEADER */
 header {
   display: flex;
   justify-content: space-between;
@@ -54,19 +62,39 @@ header {
 }
 
 /* ----------------COLORS & RESET BUTTON */
-#buttons {
+#buttonsDiv {
   display: flex;
   justify-content: space-evenly;
   padding: 30px;
 }
 
-#buttons > button {
-  height: 8vh;
-  width: 10vw;
+#buttonsDiv button {
+  min-width: 10vw;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
 }
 
 #reset {
   margin-right: 50vw;
+}
+
+#red {
+  background: linear-gradient(#5c0202, #f18053);
+}
+
+#green {
+  background: linear-gradient(#246828, #59f7ec);
+}
+
+#purple {
+  background: linear-gradient(#641bb2, #e494ee);
+}
+
+#reset {
+  background: linear-gradient(#e7bc10, #f5f5af);
 }
 
 /* -------------------SHAPES */
