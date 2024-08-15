@@ -1,6 +1,7 @@
 :root {
   --dark: rgb(7, 7, 7);
   --light: rgb(247, 235, 244);
+  --text: darkgrey;
 }
 
 @font-face {
@@ -28,7 +29,7 @@ body {
 }
 
 h2 {
-  color: whitesmoke;
+  color: var(--text);
 }
 
 main {
@@ -44,7 +45,7 @@ header {
   display: flex;
   justify-content: space-around;
   padding: 30px;
-  border-bottom: 2px dashed darkgray;
+  border-bottom: 2px solid var(--text);
 }
 
 /* ----------------MODE BUTTON */
@@ -52,7 +53,7 @@ header {
 #mode {
   background-color: transparent;
   border: none;
-  font-size: 3.5vh;
+  font-size: 5vh;
 }
 
 .light-mode {
@@ -68,7 +69,7 @@ header {
   display: flex;
   justify-content: space-evenly;
   padding: 30px;
-  border-top: 2px dashed var(--light);
+  border-top: 2px solid var(--text);
 }
 
 #buttonsDiv button {
