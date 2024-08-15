@@ -139,13 +139,11 @@ function handleSelection(e) {
   const selection = e.target;
   if (!shape1) {
     shape1 = selection;
-    shape1.parentNode.classList.add('scale');
-    shape1.parentNode.classList.add('no-click');
+    shape1.parentNode.classList.add('scale', 'no-click');
     console.log('select1', shape1);
   } else if (!shape2) {
     shape2 = selection;
-    shape2.parentNode.classList.add('scale');
-    shape2.parentNode.classList.add('no-click');
+    shape2.parentNode.classList.add('scale', 'no-click');
     console.log('select2', shape2);
     checkMatch(shape1, shape2);
   }
@@ -153,21 +151,27 @@ function handleSelection(e) {
 
 function checkMatch(shape1, shape2) {
   if (shape1.classList.toString() === shape2.classList.toString()) {
+    shape1.classList.add('animate__animated', 'animate__fadeOutUpBig');
+    shape2.classList.add('animate__animated', 'animate__fadeOutUpBig');
     matchedShapes++;
     totalShapeSets--;
     matchedH2.innerText = `Matched Shape Sets: ${matchedShapes}`;
     unmatchedH2.innerText = `Unmatched Shape Sets: ${totalShapeSets}`;
     clearSelection();
   } else {
-    shape1.parentNode.classList.remove('scale');
-    shape1.parentNode.classList.remove('no-click');
-    shape2.parentNode.classList.remove('scale');
-    shape2.parentNode.classList.remove('no-click');
+    shape1.classList.add('animate__animated', 'animate__jello');
+    shape2.classList.add('animate__animated', 'animate__jello');
+    setTimeout(() => {
+      shape1.classList.remove('animate__animated', 'animate__jello');
+      shape2.classList.remove('animate__animated', 'animate__jello');
+    }, 1500);
     clearSelection();
   }
 }
 
 function clearSelection() {
+  shape1.parentNode.classList.remove('scale', 'no-click');
+  shape2.parentNode.classList.remove('scale', 'no-click');
   shape1 = null;
   shape2 = null;
 }
@@ -179,4 +183,3 @@ function checkWin() {
     return;
   }
 }
-function winGame() {}
