@@ -267,8 +267,8 @@ function checkMatch(shape1, shape2) {
     shape2.classList.add('animate__animated', 'animate__fadeOutUpBig');
     matchedShapes++;
     totalShapeSets--;
-    matchedH2.innerText = `Matched Shape Sets: ${matchedShapes}`;
-    unmatchedH2.innerText = `Unmatched Shape Sets: ${totalShapeSets}`;
+    matchedH2.innerHTML = `Matched Shape Sets: <span style="color: red">${matchedShapes}</span>`;
+    unmatchedH2.innerHTML = `Unmatched Shape Sets: <span style="color: red">${totalShapeSets}</span>`;
     clearSelection();
   } else {
     shape1.classList.add('animate__animated', 'animate__jello');
