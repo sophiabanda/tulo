@@ -274,7 +274,7 @@ function checkMatch(shape1, shape2) {
     setTimeout(() => {
       shape1.classList.remove('animate__animated', 'animate__jello');
       shape2.classList.remove('animate__animated', 'animate__jello');
-    }, 1500);
+    }, 2000);
     clearSelection();
   }
 }

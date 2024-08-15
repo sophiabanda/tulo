@@ -53,6 +53,22 @@ header {
   background-color: var(--dark);
 }
 
+/* ----------------COLORS & RESET BUTTON */
+#buttons {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 30px;
+}
+
+#buttons > button {
+  height: 8vh;
+  width: 10vw;
+}
+
+#reset {
+  margin-right: 50vw;
+}
+
 /* -------------------SHAPES */
 svg {
   width: clamp(50px, 10vw, 200px);
