@@ -178,7 +178,7 @@ const buttonDiv = document.getElementById('buttonsDiv');
 //------------------------------------------------------------------------- EVENT LISTENERS
 lightModeButton.addEventListener('click', function () {
   html.classList.toggle('light-mode');
-  if (lightModeButton === '💡') {
+  if (lightModeButton.innerText === '💡') {
     lightModeButton.innerText = '🌘';
   } else {
     lightModeButton.innerText = '💡';
