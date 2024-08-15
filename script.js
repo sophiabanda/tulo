@@ -209,7 +209,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 function initialize(svgs) {
   const shapes = shuffleShapes();
-  const colors = shuffleColors();
+  const colors = shuffleColors(colorOptions);
   matchedShapes = 0;
   totalShapeSets = shapesArray.length / 2;
   matchedH2.innerText = `Matched Shape Sets: ${matchedShapes}`;
@@ -236,8 +236,8 @@ function shuffleShapes() {
   return shapeArr;
 }
 
-function shuffleColors() {
-  const colorArr = colorOptions.slice();
+function shuffleColors(colorArray) {
+  const colorArr = colorArray.slice();
   for (let i = colorArr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [colorArr[i], colorArr[j]] = [colorArr[j], colorArr[i]];
@@ -295,29 +295,34 @@ function checkWin() {
 }
 
 function redShapes() {
+  const reds = shuffleColors(redArray);
   const svgs = document.querySelectorAll('svg');
   svgs.forEach((svg, idx) => {
     const shapes = svg.querySelector('path, ellipse, circle');
     if (shapes) {
-      shapes.setAttribute('fill', redArray[idx]);
+      shapes.setAttribute('fill', reds[idx]);
     }
   });
 }
+
 function greenShapes() {
+  const greens = shuffleColors(greenBlueArray);
   const svgs = document.querySelectorAll('svg');
   svgs.forEach((svg, idx) => {
     const shapes = svg.querySelector('path, ellipse, circle');
     if (shapes) {
-      shapes.setAttribute('fill', greenBlueArray[idx]);
+      shapes.setAttribute('fill', greens[idx]);
     }
   });
 }
+
 function purpleShapes() {
+  const purples = shuffleColors(purplePinkArray);
   const svgs = document.querySelectorAll('svg');
   svgs.forEach((svg, idx) => {
     const shapes = svg.querySelector('path, ellipse, circle');
     if (shapes) {
-      shapes.setAttribute('fill', purplePinkArray[idx]);
+      shapes.setAttribute('fill', purples[idx]);
     }
   });
 }
