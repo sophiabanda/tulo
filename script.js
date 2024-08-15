@@ -54,6 +54,109 @@ const colorOptions = [
   'midnightblue',
   'orchid',
 ];
+const redArray = [
+  'crimson',
+  'darkred',
+  'brown',
+  'firebrick',
+  'indianred',
+  'maroon',
+  'lightcoral',
+  'orangered',
+  'red',
+  'tomato',
+  'crimson',
+  'darkred',
+  'brown',
+  'firebrick',
+  'indianred',
+  'maroon',
+  'lightcoral',
+  'orangered',
+  'red',
+  'tomato',
+  'crimson',
+  'darkred',
+  'brown',
+  'firebrick',
+  'indianred',
+  'maroon',
+  'lightcoral',
+  'orangered',
+  'red',
+  'tomato',
+];
+const greenBlueArray = [
+  'turquoise',
+  'teal',
+  'yellowgreen',
+  'springgreen',
+  'seagreen',
+  'paleturquoise',
+  'palegreen',
+  'olive',
+  'darkseagreen',
+  'olivedrab',
+  'mediumturquoise',
+  'mediumspringgreen',
+  'mediumaquamarine',
+  'mediumseagreen',
+  'lime',
+  'limegreen',
+  'lightseagreen',
+  'lightgreen',
+  'lawngreen',
+  'greenyellow',
+  'green',
+  'forestgreen',
+  'darkgreen',
+  'darkcyan',
+  'chartreuse',
+];
+const purplePinkArray = [
+  'blueviolet',
+  'darkmagenta',
+  'darkorchid',
+  'darkviolet',
+  'deeppink',
+  'darkslateblue',
+  'indigo',
+  'fuchsia',
+  'hotpink',
+  'magenta',
+  'mediumorchid',
+  'mediumslateblue',
+  'mediumvioletred',
+  'mediumpurple',
+  'purple',
+  'orchid',
+  'plum',
+  'rebeccapurple',
+  'slateblue',
+  'violet',
+  'palevioletred',
+  'blueviolet',
+  'darkmagenta',
+  'darkorchid',
+  'darkviolet',
+  'deeppink',
+  'darkslateblue',
+  'indigo',
+  'fuchsia',
+  'hotpink',
+  'magenta',
+  'mediumorchid',
+  'mediumslateblue',
+  'mediumvioletred',
+  'mediumpurple',
+  'purple',
+  'orchid',
+  'plum',
+  'rebeccapurple',
+  'slateblue',
+  'violet',
+  'palevioletred',
+];
 //------------------------------------------------------------------------- STATE VARIABLES
 let shape1 = null;
 let shape2 = null;
@@ -66,6 +169,9 @@ const svgContainer = document.getElementById('svg-container');
 const resetButton = document.getElementById('reset');
 const unmatchedH2 = document.getElementById('unmatched');
 const matchedH2 = document.getElementById('matched');
+const redButton = document.getElementById('red');
+const greensButton = document.getElementById('green');
+const purpleButton = document.getElementById('purple');
 
 //------------------------------------------------------------------------- EVENT LISTENERS
 lightModeButton.addEventListener('click', function () {
@@ -81,6 +187,10 @@ resetButton.addEventListener('click', () => {
   const svgs = document.querySelectorAll('svg');
   initialize(svgs);
 });
+
+redButton.addEventListener('click', redShapes);
+greensButton.addEventListener('click', greenShapes);
+purpleButton.addEventListener('click', purpleShapes);
 
 //------------------------------------------------------------------------------ FUNCTIONS
 window.addEventListener('DOMContentLoaded', () => {
@@ -182,4 +292,32 @@ function checkWin() {
   } else {
     return;
   }
+}
+
+function redShapes() {
+  const svgs = document.querySelectorAll('svg');
+  svgs.forEach((svg, idx) => {
+    const shapes = svg.querySelector('path, ellipse, circle');
+    if (shapes) {
+      shapes.setAttribute('fill', redArray[idx]);
+    }
+  });
+}
+function greenShapes() {
+  const svgs = document.querySelectorAll('svg');
+  svgs.forEach((svg, idx) => {
+    const shapes = svg.querySelector('path, ellipse, circle');
+    if (shapes) {
+      shapes.setAttribute('fill', greenBlueArray[idx]);
+    }
+  });
+}
+function purpleShapes() {
+  const svgs = document.querySelectorAll('svg');
+  svgs.forEach((svg, idx) => {
+    const shapes = svg.querySelector('path, ellipse, circle');
+    if (shapes) {
+      shapes.setAttribute('fill', purplePinkArray[idx]);
+    }
+  });
 }
