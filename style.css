@@ -44,6 +44,7 @@ main {
 header {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   padding: 30px;
   border-bottom: 2px solid var(--text);
 }
@@ -65,21 +66,17 @@ header {
 }
 
 /* ----------------COLORS & RESET BUTTON */
-#buttonsDiv {
+div {
   display: flex;
   justify-content: space-evenly;
   padding: 30px;
   border-top: 2px solid var(--text);
 }
 
-#buttonsDiv button {
+div button {
   min-width: 10vw;
-  padding-left: 20px;
-  padding-right: 20px;
   border: none;
   border-radius: 10px;
-  text-align: center;
-  margin-left: 2vw;
 }
 
 #reset {
@@ -120,9 +117,37 @@ svg:hover {
   pointer-events: none;
 }
 
-/* path,
-ellipse,
-circle {
-  stroke: rgb(190, 179, 179);
-  stroke-width: 2;
-} */
+/* Mobile Styles */
+@media screen and (max-width: 500px) {
+  html,
+  body {
+    max-width: 100vw;
+  }
+  #svg-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  header {
+    gap: 10px;
+    padding: 5px;
+  }
+
+  h2,
+  span {
+    font-size: 35px;
+    text-align: center;
+  }
+
+  #reset {
+    margin-right: 20vw;
+  }
+
+  div {
+    gap: 5vw;
+  }
+
+  div button {
+    min-width: 15vw;
+    height: 5vh;
+  }
+}
