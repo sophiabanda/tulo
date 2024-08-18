@@ -85,18 +85,22 @@ div button {
 
 #red {
   background: linear-gradient(#8b0303, #f18053);
+  color: var(--dark);
 }
 
 #green {
   background: linear-gradient(#246828, #59f7ec);
+  color: var(--dark);
 }
 
 #purple {
   background: linear-gradient(#641bb2, #e494ee);
+  color: var(--dark);
 }
 
 #reset {
   background: linear-gradient(#e7bc10, #f5f5af);
+  color: var(--dark);
 }
 
 /* -------------------SHAPES */
