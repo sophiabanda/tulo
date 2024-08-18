@@ -1,6 +1,6 @@
 # 2Low Games
 
-I made this game for my son, currently 2.5-years-old and loves shapes and colors. It's been a great and fun exercise in Vanilla JS and CSS. It will be continuous practice in delivering a seamless experience whether on desktop or mobile, and is a work-in-progress. Always happy to receive feedback or ideas on how to improve!
+I made this game for my son, currently 2.5-years-old and loves shapes and colors. It's been a great and fun exercise in Vanilla JS and CSS, and was my first experience with making my own SVG shapes. It will be continuous practice in delivering a seamless experience whether on desktop or mobile, and is a work-in-progress. Always happy to receive feedback or ideas on how to improve!
 
 _*Visit the deployed site here [2Low Games](https://sophiabanda.github.io/tulo/)*_
 
