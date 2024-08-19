@@ -107,6 +107,7 @@ div button {
 svg {
   width: clamp(50px, 10vw, 200px);
   max-height: fit-content;
+  transition: transform 0.5s;
 }
 
 svg:hover {
