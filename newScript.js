@@ -121,7 +121,6 @@ let shape1 = null;
 let shape2 = null;
 let matchedShapes = 0;
 let totalShapeSets = shapesArray.length;
-
 //------------------------------------------------------------------------ CACHED ELEMENTS
 const html = document.querySelector('html');
 const lightModeButton = document.getElementById('mode');
@@ -142,13 +141,18 @@ lightModeButton.addEventListener('click', toggleLightMode);
 resetButton.addEventListener('click', resetGame);
 
 Object.keys(colorButtons).forEach((color) => {
-  colorButtons[color].addEventListener('click', () => {
-    applyColors(colorGroups[color]);
-  });
+  colorButtons[color].addEventListener('click', () =>
+    applyColors(colorGroups[color])
+  );
 });
 
 //------------------------------------------------------------------------------ FUNCTIONS
 window.addEventListener('DOMContentLoaded', initializeGame);
+
+function initializeGame() {
+  createSVGElements();
+  resetGame();
+}
 
 function createSVGElements() {
   for (let i = 0; i < shapesArray.length; i++) {
@@ -164,132 +168,119 @@ function createSVGElements() {
 function resetGame() {
   clearShapeSelection();
   const svgs = document.querySelectorAll('svg');
-}
+  const shapes = shuffleArray(shapesArray);
+  const colors = shuffleArray(colorGroups.general);
 
-function initialize(svgs) {
-  const shapes = shuffleShapes();
-  const colors = shuffleColors(colorOptions);
   matchedShapes = 0;
   totalShapeSets = shapesArray.length / 2;
-  matchedH2.innerHTML = `Matched Shape Sets: <span style="color: red">${matchedShapes}</span>`;
-  unmatchedH2.innerHTML = `Unmatched Shape Sets: <span style="color: red">${totalShapeSets}</span>`;
+  updateMatchedUnmatchedCounters();
 
   svgs.forEach((svg, idx) => {
     svg.classList = '';
-    svg.innerHTML = shapes[idx];
-    svg.addEventListener('click', assignSelection);
-    const shapeEls = svg.querySelector('path, ellipse, circle');
+    svg.innerHTML = shapes[idx].svg;
+    svg.addEventListener('click', handleShapeClick);
+    const shapeElement = svg.querySelector('path, ellipse, circle');
 
-    if (shapeEls) {
-      shapeEls.setAttribute('fill', colors[idx]);
-      shapeEls.setAttribute('id', idx);
+    if (shapeElement) {
+      shapeElement.setAttribute('fill', colors[idx]);
+      shapeElement.setAttribute('data-shape', shapes[idx].shape);
+      shapeElement.setAttribute('data-id', idx);
     }
   });
 }
 
-function shuffleShapes() {
-  const shapeArr = shapesArray.slice();
-  for (let i = shapeArr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shapeArr[i], shapeArr[j]] = [shapeArr[j], shapeArr[i]];
-  }
-  return shapeArr;
+function shuffleArray(array) {
+  return array.slice().sort(() => Math.random() - 0.5);
 }
 
-function shuffleColors(colorArray) {
-  const colorArr = colorArray.slice();
-  for (let i = colorArr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [colorArr[i], colorArr[j]] = [colorArr[j], colorArr[i]];
-  }
-  return colorArr;
-}
+function handleShapeClick(event) {
+  const selection = event.target;
 
-function assignSelection(e) {
-  const selection = e.target;
-  // const selectionParent = selection.parentNode;
   if (!shape1) {
     shape1 = selection;
-    shape1.parentNode.classList.add('scale', 'no-click');
-    console.log('select1, scale no-click', shape1);
+    applySelectedState(shape1);
   } else if (!shape2) {
     shape2 = selection;
-    shape2.parentNode.classList.add('scale', 'no-click');
-    console.log('select2, scale no-click', shape2);
-    checkMatch(shape1, shape2);
+    applySelectedState(shape2);
+    checkForMatch();
   }
 }
 
-function checkMatch(shape1, shape2) {
-  if (shape1.classList.toString() === shape2.classList.toString()) {
-    shape1.classList.add('animate__animated', 'animate__fadeOutUpBig');
-    shape2.classList.add('animate__animated', 'animate__fadeOutUpBig');
-    matchedShapes++;
-    totalShapeSets--;
-    matchedH2.innerHTML = `Matched Shape Sets: <span style="color: red">${matchedShapes}</span>`;
-    unmatchedH2.innerHTML = `Unmatched Shape Sets: <span style="color: red">${totalShapeSets}</span>`;
-    clearShape();
+function applySelectedState(shape) {
+  shape.parentNode.classList.add('scale', 'no-click');
+}
+
+function checkForMatch() {
+  if (shape1.dataset.shape === shape2.dataset.shape) {
+    handleMatch();
   } else {
-    shape1.classList.add('animate__animated', 'animate__jello');
-    shape2.classList.add('animate__animated', 'animate__jello');
-    setTimeout(() => {
-      shape1.classList.remove('animate__animated', 'animate__jello');
-      shape2.classList.remove('animate__animated', 'animate__jello');
-    }, 2000);
-    shape1.parentNode.classList.remove('scale', 'no-click');
-    shape2.parentNode.classList.remove('scale', 'no-click');
-    clearSVG();
-    clearShape();
+    handleMismatch();
   }
 }
 
-function clearSVG() {
+function handleMatch() {
+  applyAnimation(shape1, 'fadeOutUpBig');
+  applyAnimation(shape2, 'fadeOutUpBig');
+  updateMatchedShapes();
+  resetSelection();
+}
+
+function handleMismatch() {
+  applyAnimation(shape1, 'jello');
+  applyAnimation(shape2, 'jello');
+  setTimeout(() => {
+    removeAnimation(shape1, 'jello');
+    removeAnimation(shape2, 'jello');
+    resetSelectedState();
+    resetSelection();
+  }, 2000);
+}
+
+function applyAnimation(element, animation) {
+  element.classList.add('animate__animated', `animate__${animation}`);
+}
+
+function removeAnimation(element, animation) {
+  element.classList.remove('animate__animated', `animate__${animation}`);
+}
+
+function updateMatchedShapes() {
+  matchedShapes++;
+  totalShapeSets--;
+  updateMatchedUnmatchedCounters();
+}
+
+function updateMatchedUnmatchedCounters() {
+  matchedH2.innerHTML = `Matched Shape Sets: <span style="color: red">${matchedShapes}</span>`;
+  unmatchedH2.innerHTML = `Unmatched Shape Sets: <span style="color: red">${totalShapeSets}</span>`;
+}
+
+function resetSelectedState() {
   shape1.parentNode.classList.remove('scale', 'no-click');
   shape2.parentNode.classList.remove('scale', 'no-click');
 }
 
-function clearShape() {
+function resetSelection() {
   shape1 = null;
   shape2 = null;
 }
 
-function checkWin() {
-  if (totalShapeSets === 0) {
-    winGame();
-  } else {
-    return;
-  }
+function toggleLightMode() {
+  html.classList.toggle('light-mode');
+  lightModeButton.textContent = html.classList.contains('light-mode')
+    ? 'Dark Mode'
+    : 'Light Mode';
 }
 
-function redShapes() {
-  const reds = shuffleColors(redArray);
+function applyColors(colors) {
   const svgs = document.querySelectorAll('svg');
   svgs.forEach((svg, idx) => {
-    const shapes = svg.querySelector('path, ellipse, circle');
-    if (shapes) {
-      shapes.setAttribute('fill', reds[idx]);
-    }
+    const shapeElement = svg.querySelector('path, ellipse, circle');
+    shapeElement.setAttribute('fill', colors[idx]);
   });
 }
 
-function greenShapes() {
-  const greens = shuffleColors(greenBlueArray);
-  const svgs = document.querySelectorAll('svg');
-  svgs.forEach((svg, idx) => {
-    const shapes = svg.querySelector('path, ellipse, circle');
-    if (shapes) {
-      shapes.setAttribute('fill', greens[idx]);
-    }
-  });
-}
-
-function purpleShapes() {
-  const purples = shuffleColors(purplePinkArray);
-  const svgs = document.querySelectorAll('svg');
-  svgs.forEach((svg, idx) => {
-    const shapes = svg.querySelector('path, ellipse, circle');
-    if (shapes) {
-      shapes.setAttribute('fill', purples[idx]);
-    }
-  });
+function clearShapeSelection() {
+  shape1 = null;
+  shape2 = null;
 }
