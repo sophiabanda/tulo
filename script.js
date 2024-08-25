@@ -253,11 +253,9 @@ function handleSelection(e) {
   if (!shape1) {
     shape1 = selection;
     shape1.parentNode.classList.add('scale', 'no-click');
-    console.log('select1', shape1);
   } else if (!shape2) {
     shape2 = selection;
     shape2.parentNode.classList.add('scale', 'no-click');
-    console.log('select2', shape2);
     checkMatch(shape1, shape2);
   }
 }
