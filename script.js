@@ -218,6 +218,7 @@ function initialize(svgs) {
   unmatchedH2.innerHTML = `Unmatched Shape Sets: <span style="color: red">${totalShapeSets}</span>`;
 
   svgs.forEach((svg, idx) => {
+    svg.classList = '';
     svg.innerHTML = shapes[idx];
     svg.addEventListener('click', handleSelection);
     const shapeEls = svg.querySelector('path, ellipse, circle');
@@ -269,7 +270,7 @@ function checkMatch(shape1, shape2) {
     totalShapeSets--;
     matchedH2.innerHTML = `Matched Shape Sets: <span style="color: red">${matchedShapes}</span>`;
     unmatchedH2.innerHTML = `Unmatched Shape Sets: <span style="color: red">${totalShapeSets}</span>`;
-    clearSelection();
+    clearShape();
   } else {
     shape1.classList.add('animate__animated', 'animate__jello');
     shape2.classList.add('animate__animated', 'animate__jello');
@@ -277,15 +278,19 @@ function checkMatch(shape1, shape2) {
       shape1.classList.remove('animate__animated', 'animate__jello');
       shape2.classList.remove('animate__animated', 'animate__jello');
     }, 2000);
-    clearSelection();
+    clearSVG();
+    clearShape();
   }
 }
 
-function clearSelection() {
-  shape1.parentNode.classList.remove('scale', 'no-click');
-  shape2.parentNode.classList.remove('scale', 'no-click');
+function clearShape() {
   shape1 = null;
   shape2 = null;
+}
+
+function clearSVG() {
+  shape1.parentNode.classList.remove('scale', 'no-click');
+  shape2.parentNode.classList.remove('scale', 'no-click');
 }
 
 function checkWin() {
